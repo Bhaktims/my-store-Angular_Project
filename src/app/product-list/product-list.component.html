@@ -1,0 +1,55 @@
+<!-- 
+<h1>{{name}}</h1>
+ -->
+<!-- 
+<h2> Product ID :{{product.id}}</h2>
+<h2> Product Name :{{product.name}}</h2>
+<h2> Product price :{{product.price}}</h2> -->
+
+<!-- {{ 656+89}}
+{{6>8}} -->
+<div class="container">
+  <div class="row my-4">
+    <label for="serach" class="form-label">Search: </label>
+    <!-- <input type="text" class="form-control" id="search" 
+  placeholder="Search..." [value]="filterBy"          
+  [(ngModel)] = "filterBy" /> two way data binding example
+  {{ filterBy }} -->
+
+    <input type="text" class="form-control" id="search" 
+  placeholder="Search..."        
+  [(ngModel)] = "filterBy" /> <!-- two way data binding example using getter setter-->
+  {{ filterBy }}
+  </div> 
+
+  <div class="row my-4">
+    <div class="form check">
+      <input class="form-check-input" type="checkbox" id="showImage" [(ngModel)]="showImage">
+      <label class="form-check-label" for="showImage" > &nbsp;&nbsp;Show Image</label>
+      <span style="color: red;">{{ showImage }}</span>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage"> {{errorMessage}}</div>
+  <div class="row row-cols-4">
+  <div *ngFor="let p of filteredProducts">
+      <div class="card my-2" style="width: 18rem;">
+         <div *ngIf = "showImage"> 
+          <img [src]="p.image" class="card-img-top" [alt]="altText" [ngStyle] ="imgStyle">
+         </div>
+          <div class="card-body" >
+            <h5 class="card-title" [routerLink]="['/products',p.id]"
+            [style.cursor]="'pointer'" [ngStyle] ='nameStyle' [style.fontWeight]="'bold'">{{p.name }}</h5>
+            <h5 class="card-title" [ngStyle] = 'priceStyle'>{{p.price | currency:'INR':'symbol':'1.0-2' }}</h5> 
+            <p appHighlight>{{p.discount | percent}} off</p>
+            <p appHighlight>After Discount : {{p.price | discountedprice : p.discount | currency:'INR':'symbol' }}</p>
+            <h5 class="card-text" [ngStyle] = "{'color':'purple'}">{{p.cat | uppercase}}</h5>
+            <p >Code : {{p.code | replaceChr : '@' }}</p>
+            <p class="card-text" [ngClass]='customClass'>{{p.desc | slice:0 : 100 | lowercase }}</p>
+            <p >Published on : {{p.publishedDate | date : 'short'}}</p>
+            <a href="#" class="btn btn-primary" [title]="titletext" (click)="addToCart($event,p)">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

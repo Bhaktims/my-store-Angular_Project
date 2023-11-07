@@ -1,0 +1,245 @@
+Data Binding:
+
+1. String Interpolation:
+{{ }}
+
+2. One way data binding :
+
+i. Property Binding/ attribute binding
+All the attribute of the HTML are treated as properties in the angular. and we can bind there 
+values wt the variables declared in the typescript.The attribute can be converted into property by enclosing the attribute name in []
+the flow of the data from TS to HTML(template)
+
+[property_name] = "variable_name"
+
+Typescript =======> HTML ( data flow)
+
+ii. Event  Binding -  the event is anything that happens on the HTML page like loadingpage, moving the cursor,
+typing in the text box, clicking on the button etc. 
+the event handling is technique where the function of the typescript will be binded with the specific event on the HTML page/element
+
+this is event binding where the event occuring on the HTMLpage will invoke some code ine the typescript. This code is specific as a function
+the function is piece of the code / logic written to achieve some specific task
+
+the name of the event to be binded is written 
+
+Typescript <======= HTML ( data flow)
+
+
+3.Two way Data Binding
+The data of the variable is binded wt the property of the leement of the HTML and value of the same variable
+will be updated if the input evnet occures on the input form element.
+This binding mostly work wt input elemnt - taxtbox, radiobutton,checkboxes etc
+using ngModel directives we can apply two way data Binding
+
+Typescript <=======> HTML ( data flow)
+
+
+Directives :
+they are the way to extend the HTML syntax/template and add the custom behaviour to the 
+elements of the template
+there are three types of directives
+
+1. component : directive with their own template.like when we create a new component inthe angular project we associate it will 
+the selector. This selector is used as the directive in the template of another component
+Most of the component directives are user defined. Component are used as tag in HTML
+<app-root></app-root> 
+2.Structural : directives that affect the structure of the HTML.They are prefixed with * such as *ngFor,*ngIf,*ngSwitch
+
+3.Attribute: Directives that change the appearance or behaviour of the existing elements
+They are applied as attributes to the elments like ngStyle, ngClass,ngModel
+
+for using ngStyle we can declare the styles as the object in the TS and then bind this object with t property ngStyle
+
+[ngStyle]
+
+for using ngClass we can declare the object in the javascript where the it is indicating which class to be applied using true/flase value and then we 
+
+[ngClass]
+
+for using ngModel we have tio import module a in project called FormsMOdule. used to implement two data binding.
+
+[(ngModel)]
+
+
+We can perform two data binding we another manner using getter and setter 
+In this technique we will not bind a variable declared in t TS to the ngMOdel directive of the input element.
+rather we will bind the methods wt t ngmodel directives
+
+1. declare pvt variable in TS class. the convention for naming the pvt variable is 
+to prefix it wt an _ so tht we cn distinguish between public and private
+2. declare get and set method were get method will be used to read the value from the pvt variable 
+whereas set method will be used to set/change the value of the pvt variable
+
+
+
+
+
+
+===========================================================
+INTERFACE
+
+Custom Types:
+
+in TS many all the variables are defined wt the data types but in the current example the product array,
+the indivdual product object does not have any specific type. Due to which we can change the datat type of the value remove the properties, add properties randomely wtout any error. Now if we want 
+to fix the type for the  object  we can either declare class or an INTERFACE
+
+========================================
+pipes 
+
+used to transform the data display on the HTML pipe will take the raw data and present the formatted data as the output
+pipes are applied when the data 
+
+
+ two types of pipes:
+ 1. built in - predefined 
+ 2. user defined
+ - we can custome price usnig ng g p pipename. we will then define the transform function of the pipe class to specify the 
+ transformation to be applied on the HTML element
+
+========================================================
+user defined directives
+
+ng g d directive name
+
+
+=======================
+
+component communication
+
+1. Nested component:
+
+nested components are the componnets within another component
+one component here will be parent which contains the child component
+
+@input  == used to pass the data from parent to child
+WE do property binding in input method
+to pass the data from parent to child component first we need to 
+declare a variable in the t child component tht will receive the valueas t input from the parent component
+using @input decorator on each variable
+
+now the input variable of the child component will become the property of the parent
+component 
+
+@ output == to pass the data from child to parent.
+WE do event binding in output method
+to pass the data from child component to the parent componenet we first declare
+an event  emitter who has value will go from child to parent as an event
+While declaring this event emitter we will also specify the type od the value 
+tht we will emit as the event from child componenet
+@ out put decorator will be added over this eventemitter
+after this we will emit the value using emit() method.  this varibale 
+declare using @ output willl be handled as event in the aprent componenet and the value which is emitted is 
+
+
+lifecycle
+methods that rae used to handle the different, lifecycle stages
+of the componenet
+
+ngOnchanges - to use ngonchange in the class the class should implement onchnages INTERFACE.
+this method is called as soon as the component is loaded in the browser.
+if the class includes this method then it is the 1 st method to be called.
+this method gets aclled everytime there is a changes in the input variables
+
+ngOnit - to initialize the variable in the class we can used this methof which will be calledafter ngonchanges method. 
+but if for the class ngonchanges is not defined, this method will be called first as soon the page is loaded in the browser
+
+
+2. Any component :
+If we wnt to share some variable or method across the different component we can do it using the service class
+service as the name suggest is actually a helper class which will provide the help to some components so the application
+THis service class can be used by multiple componnet, directives and other service classes
+
+service class is not used just for sharing the data and functionality but it is also used to reduce
+the load of the program in the component
+
+If we write all the code in the individual component ts file . component load time gets increases which can be reduce by moving some of the functionality in the Service class.
+
+we declare the service class but this service class can not be used directly in the componenet. To use the service class in the component,directive or other service class we will need to inject the service using the constructor of the componenet, directiv or t other service class.
+
+DEPENDANCY INJECTION  - the component class needs the functionality of the service class for which it needs the instanceof this class. but rather we can creating this instance manually we will use the concept of the dependancy injection using which the 
+instance(objcet) o fthe service is automatically created when required and injected in the component class.
+This injection is done in the constructor of the component class.
+
+CReate the service class:
+
+ng g s serviceclassname
+
+here 'root ' mns this service class can be used ant=ywhere in the application. if we want to 
+restrict the access of this service we can mention the module name in provideIn
+
+Inject the instance of the service in the component using the constructor of the 
+
+=================================
+
+1. npm i bootstrap-icons - install bootstrap icons
+
+=======================================
+Rx-JS - reactive javascript 
+
+reactive extension library for JS
+Asynchronous programming - parallel programming
+
+the main building block of the RXjs 
+1. observable
+2. subscription
+3. subject
+4. operator
+
+Two ways for execution in js/ts
+1. synchronous 
+every statement is executed one after the another - ( sequentially)
+even the function calls are done sequentially
+
+2. Asynchronous - the functions are implemented simulanously 
+Adding of the data , fetching/consuming of the data is in parallel
+
+
+Angular use RXjs for the following  purpose:
+1.reacting to http request
+2.values/status updated from the angular Forms 
+3. Router and FormsMOdule to listen for and respond to he user-input
+4.Define the custome events that sends observable output data
+
+observable:
+  Function that converts the normal data into observable data stream (live stream)
+It emits the value from the data stram Asynchronously. if the complete data is emitted it send the complete signal otherwise
+error signal is emitted
+To create an observable variable we use a convention wherein the observable variable is suffixed wt $ to distinguish between noraml and observable variable.
+In observable the values taht are part of the observable stream can be accessed  only after subcribing to it
+We can have multiple subscription on the single observable 
+observable are unicast where each subscriber has the independant execution of the observable. We can say in other words, each subscribers
+get its own copy of the observable values from start
+
+observable are declarative, here first we define the values then consume
+
+( obervables are like watching recording - when we log in we can start to end lecture)
+
+Operator : 
+  Functions that can perform some task on the observable or create the observable .
+  two types of operator:
+  1. Pipable  : functions that will operate on the values of the observable to return
+  a new observable  
+
+  2. Creation ; Function using which we can create some observable
+    when we subscribe the observale we specify what is to be done wt the vales in t observable
+
+subscription:
+
+The object returned by subscribe which is mostly used to unsubscribe the observable
+
+Subject:
+ SUbject type of the observable which is muticasted. here only one execution parth of the 
+ observable / subject will be created that t subscriber will subscribe.
+
+IN subject is imperative here the values can be produces independantly
+
+(Subjects are like watching live lecture- from the point we login we can attend the lecture)
+
+
+Async Pipe
+rather than doing the manual subscription and unsubscription on the observable or subject we can use aync pipe to do it
+
+
+behaviourSubject is subject only    

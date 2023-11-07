@@ -1,0 +1,10 @@
+/*u went there and typed anything then tht field get red*/
+
+.ng-touched.ng-invalid:not(form){
+    border-left: 5px solid red;
+}
+
+
+.ng-touched.ng-valid:not(form){
+    border-left: 5px solid green;
+}

@@ -1,0 +1,40 @@
+<form #rf="ngForm"(ngSubmit)="submitForm()">
+    <div class="mb-3">
+        <label for="author" class="form-label">Author*</label>
+        <input type="text" class="form-control" id="author"
+        [(ngModel)]="reviewForm.author" name="author" required #author="ngModel">   
+    </div>
+    <div class="alert alert-danger" *ngIf="author.invalid && author.touched">
+        Enter Author Name !!
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email*</label>
+        <input type="email" class="form-control" id="email"
+        [(ngModel)]="reviewForm.email" name="email" required #email="ngModel">
+        {{email.value}}
+    </div>
+    <div class="alert alert-danger" *ngIf="email.invalid && email.touched">
+        Enter Email !!
+    </div>
+    <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <select class="form-select" id="rating"
+        [(ngModel)]="reviewForm.rating" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3"
+        [(ngModel)]="reviewForm.description" name="description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="rf.invalid">Submit</button>
+</form>
+
+{{reviewForm.author}}
+<br>
+{{reviewForm | json}}

@@ -1,0 +1,20 @@
+.bg-purple{
+    background-color:burlywood;
+}
+
+.bg-green{
+    background-color:gray;
+}
+
+a,a:link{
+    color: white;
+} 
+
+a:hover{
+    color: greenyellow;
+}
+
+.bi{
+    font-size: 120%;
+    color: white;
+}

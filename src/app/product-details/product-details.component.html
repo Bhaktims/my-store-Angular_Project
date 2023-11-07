@@ -1,0 +1,22 @@
+
+<div class="container mt-4">
+<div class="mb-4">
+    <button class="btn btn-primary m-4" (click)="goBack()"> Go Back</button>
+    <button class="btn btn-primary m-4" (click)="goPrevious()"> Prev</button>
+    <button class="btn btn-primary m-4" (click)="goNext()"> Next</button>
+
+</div>
+
+    <img [src]="product.image"
+     [style.width.px]="500"
+     [style.height.px]="500"/>
+     <h1>{{product.name | uppercase}}</h1>
+   
+
+     <div>
+        <button class="btn btn-primary m-5" [routerLink]="['/products',product.id,'review']">Review</button>
+     </div>
+
+    <router-outlet></router-outlet>
+
+    </div>
